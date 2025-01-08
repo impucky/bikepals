@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pw
+      - POSTGRES_DB=bikepals_db
+
+volumes:
+  postgres_data:

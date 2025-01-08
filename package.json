@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "pnpm db:up && turbo run dev",
     "build": "turbo run build",
-    "start": "node server/dist/main"
+    "start": "pnpm db:up && node server/dist/main",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down"
   },
   "devDependencies": {
     "turbo": "^2.3.3"
