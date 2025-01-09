@@ -1,8 +1,11 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
-import { CreateUserDto } from './dtos/create-user.dto';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { CreateUserDto } from '../users/dtos/create-user.dto';
+import { UserDto } from 'src/users/dtos/user.dto';
 
+@Serialize(UserDto)
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -15,4 +18,12 @@ export class AuthController {
     const user = await this.authService.signup(body);
     return user;
   }
+
+  // @Post('/signin')
+  // async signin() {
+  // }
+
+  // @Post('/signout')
+  // signout() {
+  // }
 }
